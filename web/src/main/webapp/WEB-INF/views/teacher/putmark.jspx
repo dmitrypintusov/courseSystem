@@ -1,0 +1,35 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: Дмитрий
+  Date: 26.02.2017
+  Time: 11:37
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:spring="http://www.springframework.org/tags"
+          xmlns="http://www.w3.org/1999/xhtml"
+          version="2.0">
+
+    <div align="center">
+        <spring:url value="/teacher/putmark" var="putMarkUrl"/>
+        <form name="putMarkForm" method="post" action="${putMarkUrl}">
+            <h3><spring:message code="page.teacher.putmark.banner"/></h3>
+            <div class="form-group">
+                <strong><spring:message code="page.teacher.input.studentid"/></strong>
+                <input type="text" class="form-control" name="studentId" value=""/>
+            </div>
+            <div class="form-group">
+                <strong><spring:message code="page.teacher.input.mark"/></strong>
+                <input type="text" class="form-control" name="studentMark" value=""/>
+            </div>
+            <div class="form-group">
+                <strong><spring:message code="page.teacher.input.coursename"/></strong>
+                <input type="text" class="form-control" name="courseName" value=""/>
+            </div>
+            ${successOperation} <br/>
+            <spring:message var="button" code="page.teacher.putmark.button"/>
+            <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"><jsp:text/></input>
+            <input type="submit" class="btn btn-success" value="${button}"/> <br/>
+        </form>
+    </div><br/>
+</jsp:root>

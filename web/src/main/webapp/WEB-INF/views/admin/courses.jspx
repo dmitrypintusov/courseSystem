@@ -1,0 +1,81 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: Дмитрий
+  Date: 26.02.2017
+  Time: 15:34
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:spring="http://www.springframework.org/tags"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:sf="http://www.springframework.org/tags/form"
+          version="2.0">
+
+    <div>
+        <table class="table table-hover table-bordered" align="center">
+            <tr bgcolor="#CCCCCC" align="center">
+                <td><strong><spring:message code="page.admin.course.name"/></strong></td>
+                <td><strong><spring:message code="page.admin.course.hours"/></strong></td>
+                <td><strong><spring:message code="page.admin.course.status"/></strong></td>
+            </tr>
+            <c:forEach var="course" items="${courseList}">
+                <tr align="center">
+                    <td><c:out value="${ course.courseName }"/></td>
+                    <td><c:out value="${ course.hours }" /></td>
+                    <td><c:out value="${ course.courseStatus }" /></td>
+                </tr>
+            </c:forEach>
+        </table><br/>
+
+        <table class="table table-bordered" align="center">
+            <tr align="center">
+                <c:forEach begin="1" end="${numberOfPages}" var="i">
+                    <c:choose>
+                        <c:when test="${currentPage eq i}">
+                            <td>${i}</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td><a href="${pageContext.request.contextPath}/admin/courses?currentPage=${i}">${i}</a></td>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </tr>
+        </table>
+
+        <spring:url value="/admin/courses" var="coursesUrl"/>
+        <sf:form name="filterForm" method="post" action="${coursesUrl}" modelAttribute="filter">
+            <table class="table" align="center">
+                <tr align="center">
+                    <td><label for="recordsPerPage"><spring:message code="page.admin.courses.recordsperpage.title"/></label></td>
+                    <td><label for="ordering"><spring:message code="page.admin.courses.ordering.title"/></label></td>
+                    <td><label for="direction"><spring:message code="page.admin.courses.direction.title"/></label></td>
+                </tr>
+                <tr align="center">
+                    <td>
+                        <sf:select cssClass="form-control" path="recordsPerPage" id="recordsPerPage">
+                            <sf:option value="3">3</sf:option>
+                            <sf:option value="5">5</sf:option>
+                            <sf:option value="10">10</sf:option>
+                        </sf:select>
+                    </td>
+                    <td>
+                        <sf:select cssClass="form-control" path="ordering" id="ordering">
+                            <sf:option value="courseName"><spring:message code="page.admin.courses.order.name"/></sf:option>
+                            <sf:option value="hours"><spring:message code="page.admin.courses.order.hours"/></sf:option>
+                            <sf:option value="courseStatus"><spring:message code="page.admin.courses.order.status"/></sf:option>
+                        </sf:select>
+                    </td>
+                    <td>
+                        <sf:select cssClass="form-control" path="direction" id="direction">
+                            <sf:option value="asc"><spring:message code="page.admin.courses.direction.asc"/></sf:option>
+                            <sf:option value="desc"><spring:message code="page.admin.courses.direction.desc"/></sf:option>
+                        </sf:select>
+                    </td>
+                </tr>
+            </table>
+            <div align="center"><spring:message var="button" code="page.admin.courses.button"/>
+            <input type="submit" class="btn btn-info" value="${button}" /></div>
+        </sf:form>
+    </div>
+</jsp:root>

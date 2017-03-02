@@ -1,0 +1,16 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          version="2.0">
+    <footer>
+        <p align="center">
+            <span style="font-size: smaller; ">
+                <em> Dmitry Pintusov, 2017</em>
+                <br/>
+                <span>
+	                <a href="mailto:dzmitrypintusov@gmail.com">dzmitrypintusov@gmail.com</a>
+                </span>
+            </span>
+        </p>
+    </footer>
+</jsp:root>
+

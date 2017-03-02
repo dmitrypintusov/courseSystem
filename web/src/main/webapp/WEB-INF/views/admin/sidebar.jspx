@@ -1,0 +1,18 @@
+
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:s="http://www.springframework.org/tags"
+          xmlns:sec="http://www.springframework.org/security/tags"
+          xmlns="http://www.w3.org/1999/xhtml"
+          version="2.0">
+
+    <div class="list-group">
+        <a class="list-group-item" href="${pageContext.request.contextPath}/admin/main"><s:message code="page.common.sidebar.main"/></a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/admin/maketeacher"><s:message code="page.admin.sidebar.maketeacher"/></a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/admin/archive"><s:message code="page.admin.sidebar.archive"/></a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/admin/courses"><s:message code="page.admin.sidebar.courses"/></a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/logout"><s:message code="page.common.sidebar.logout"/></a>
+    </div>
+</jsp:root>
+
+
+

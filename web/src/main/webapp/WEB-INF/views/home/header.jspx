@@ -1,0 +1,42 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          version="2.0">
+
+    <header>
+        <div style="padding: 5px; ">
+            <table>
+                <tr>
+                    <td style="padding: 5px;">
+                        <a href="?locale=ru">
+                            <img src="${pageContext.request.contextPath}/assets/img/locale_ru.png"
+                                height="20"
+                                width="20"
+                                style="display:block;"
+                                />
+                        </a>
+                    </td>
+                    <td style="padding: 5px;">
+                        <a href="?locale=en">
+                            <img src="${pageContext.request.contextPath}/assets/img/locale_en.png"
+                                 height="20"
+                                 width="20"
+                                 style="display:block;"
+                            />
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p align="center">
+            <a href="${pageContext.request.contextPath}/home">
+                <img src="${pageContext.request.contextPath}/assets/img/courses.png"
+                     alt="logo"
+                     name="Insert_logo"
+                     id="Insert_logo"
+                     height="120"
+                     style="display:block;"
+                />
+            </a>
+        </p>
+    </header>
+</jsp:root>

@@ -1,0 +1,13 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:spring="http://www.springframework.org/tags"
+          version="2.0">
+    <footer>
+        <div align="center">
+            <spring:message code="page.footer.developer"/><br/>
+            <a href="mailto:dzmitrypintusov@gmail.com">dzmitrypintusov@gmail.com</a>
+        </div>
+    </footer>
+</jsp:root>
+
+

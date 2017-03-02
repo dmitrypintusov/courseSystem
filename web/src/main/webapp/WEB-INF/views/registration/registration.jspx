@@ -1,0 +1,63 @@
+
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:sf="http://www.springframework.org/tags/form"
+          xmlns:s="http://www.springframework.org/tags"
+          version="2.0" >
+    <div>
+        <s:url value="/registration" var="registrationUrl"/>
+        <sf:form name="registrationForm"
+                 action="${registrationUrl}"
+                 method="post"
+                 modelAttribute="newUser"
+                 onsubmit="return validateForm()">
+
+                <div class="form-group">
+                <p align="center"><b><s:message code="page.registration.banner"/></b></p>
+                <label for="firstName"><s:message code="page.common.input.firstname"/></label>
+                <sf:input path="firstName" class="form-control" id="firstName"/>
+                            <span id="emptyFirstName"/>
+                            <sf:errors path="firstName"/>
+                </div>
+                <div class="form-group">
+                    <label for="lastName"><s:message code="page.common.input.lastname"/></label>
+                    <sf:input path="lastName" class="form-control" id="lastName"/>
+                    <span id="emptyLastName"/>
+                     <sf:errors path="lastName"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="login"><s:message code="page.common.input.login"/></label>
+                    <sf:input path="login" class="form-control" id="login" />
+                    <span id="emptyLogin"/>
+                    <sf:errors path="login"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="password_1"><s:message code="page.registration.input.password_1"/></label>
+                    <sf:password path="password_1" class="form-control" id="password_1"/>
+                    <span id="emptyPassword_1"/>
+                    <sf:errors path="password_1"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="password_2"><s:message code="page.registration.input.password_2"/></label>
+                    <sf:password path="password_2" class="form-control" id="password_2"/>
+                    <span id="emptyPassword_2"/>
+                    <sf:errors path="password_2"/>
+                    <span id="inputError"/>
+                    <label id="label">
+                    ${successOperation}
+                    ${errorUserExists}
+                    </label><br/>
+                </div>
+
+                <div class="form-group" align="center">
+                    <s:message var="button" code="page.registration.button"/>
+                    <input type="submit" class="btn btn-success" value="${button}" onclick="clearResult()"/>
+                    <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"><jsp:text/></input>
+                </div>
+
+        </sf:form>
+    </div>
+</jsp:root>

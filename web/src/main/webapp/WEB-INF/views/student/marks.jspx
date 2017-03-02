@@ -1,0 +1,30 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: USER
+  Date: 01.03.17
+  Time: 15:35
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:spring="http://www.springframework.org/tags"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+
+    <div align="center">
+        <table class="table table-hover table-bordered" align="center">
+            <tr bgcolor="#CCCCCC">
+                <td align="center"><strong><spring:message code="page.student.mark.user"/></strong></td>
+                <td align="center"><strong><spring:message code="page.student.mark.mark"/></strong></td>
+                <td align="center"><strong><spring:message code="page.student.mark.course"/></strong></td>
+            </tr>
+            <c:forEach var="marks" items="${markList}">
+                <tr align="center">
+                    <td><c:out value="${marks.user.getFirstName()} ${marks.user.getLastName()}"/></td>
+                    <td><c:out value="${marks.mark}" /></td>
+                    <td><c:out value="${marks.course.getCourseName()}" /></td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+</jsp:root>

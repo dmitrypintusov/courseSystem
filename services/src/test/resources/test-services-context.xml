@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="by.pvt.pintusov.courses.services"/>
+    <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="false"/>
+
+    <!-- Hikari -->
+    <bean id = "hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="poolName" value="springHikariCP" />
+        <property name="connectionTestQuery" value="SELECT 1" />
+        <property name="dataSourceClassName" value="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" />
+        <property name="minimumIdle" value="5" />
+        <property name="maximumPoolSize" value="10" />
+        <property name="idleTimeout" value="30000" />
+
+        <property name="dataSourceProperties">
+            <props>
+                <prop key="url">jdbc:mysql://localhost:3306/courses_test</prop>
+                <prop key="user">root</prop>
+                <prop key="password">1234</prop>
+                <prop key="characterEncoding">utf-8</prop>
+                <prop key="cachePrepStmts">true</prop>
+                <prop key="prepStmtCacheSize">250</prop>
+                <prop key="prepStmtCacheSqlLimit">2048</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg ref="hikariConfig"/>
+    </bean>
+
+    <!-- Hibernate -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+          p:dataSource-ref="dataSource"
+          p:namingStrategy-ref="namingStrategy"
+    >
+        <property name="packagesToScan">
+            <list>
+                <value>by.pvt.pintusov.courses.pojos</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="connection.provider_class">com.zaxxer.hikari.hibernate.HikariConnectionProvider</prop>
+                <prop key="connection.isolation">2</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</prop>
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="cache.use_query_cache">true</prop>
+                <prop key="net.sf.ehcache.configurationResourceName">ehcache.xml</prop>
+                <prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
+                <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="namingStrategy" class="by.pvt.pintusov.courses.utils.CustomNamingStrategy" />
+
+    <bean id="testServiceTransactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="testServiceTransactionManager"/>
+
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="testServiceTransactionManager"/>
+    </bean>
+
+    <!-- DAO -->
+    <bean id="courseDao" class="by.pvt.pintusov.courses.dao.impl.CourseDaoImpl">
+        <constructor-arg ref="sessionFactory" />
+    </bean>
+
+    <bean id="userDao" class="by.pvt.pintusov.courses.dao.impl.UserDaoImpl">
+        <constructor-arg ref="sessionFactory" />
+    </bean>
+
+    <bean id="markDao" class="by.pvt.pintusov.courses.dao.impl.MarkDaoImpl">
+        <constructor-arg ref="sessionFactory" />
+    </bean>
+
+    <bean id="accessLevelDao" class="by.pvt.pintusov.courses.dao.impl.AccessLevelDaoImpl">
+        <constructor-arg ref="sessionFactory" />
+    </bean>
+
+    <bean id="archiveDao" class="by.pvt.pintusov.courses.dao.impl.ArchiveDaoImpl">
+        <constructor-arg ref="sessionFactory" />
+    </bean>
+
+    <!-- SERVICES -->
+    <bean id="userService" class="by.pvt.pintusov.courses.services.impl.UserServiceImpl">
+        <constructor-arg ref="userDao"/>
+    </bean>
+
+    <bean id="courseService" class="by.pvt.pintusov.courses.services.impl.CourseServiceImpl">
+        <constructor-arg ref="courseDao"/>
+    </bean>
+
+    <bean id="markService" class="by.pvt.pintusov.courses.services.impl.MarkServiceImpl">
+        <constructor-arg ref="markDao"/>
+    </bean>
+
+    <bean id="archiveService" class="by.pvt.pintusov.courses.services.impl.ArchiveServiceImpl">
+        <constructor-arg ref="archiveDao"/>
+    </bean>
+
+    <bean id="accessLevelService" class="by.pvt.pintusov.courses.services.impl.AccessLevelServiceImpl">
+        <constructor-arg ref="accessLevelDao"/>
+    </bean>
+</beans>

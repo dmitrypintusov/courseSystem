@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <!-- HOME PAGE TEMPLATE-->
+    <definition name="home_template" template="/WEB-INF/views/layouts/layout.jspx">
+        <put-attribute name="title" value="page.home.title"/>
+        <put-attribute name="header" value="/WEB-INF/views/home/header.jspx"/>
+        <put-attribute name="sidebar" value="/WEB-INF/views/home/sidebar.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/home/main.jspx"/>
+        <put-attribute name="footer" value="/WEB-INF/views/home/footer.jspx"/>
+    </definition>
+
+    <!-- HOME PAGE -->
+    <definition name="home" extends="home_template"/>
+
+    <!-- INFO PAGE -->
+    <definition name="info" extends="home_template">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/info/info.jspx"/>
+    </definition>
+
+    <!-- NEWS PAGE -->
+    <definition name="news" extends="home_template">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/news/news.jspx"/>
+    </definition>
+
+    <!-- ADMIN PAGES -->
+    <definition name="admin_default" extends="home_template">
+        <put-attribute name="sidebar" value="/WEB-INF/views/admin/sidebar.jspx"/>
+    </definition>
+    <definition name="admin/main" extends="admin_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/main.jspx"/>
+    </definition>
+    <definition name="admin/maketeacher" extends="admin_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/maketeacher.jspx"/>
+    </definition>
+    <definition name="admin/archive" extends="admin_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/archive.jspx"/>
+    </definition>
+    <definition name="admin/courses" extends="admin_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/courses.jspx"/>
+    </definition>
+
+    <!-- TEACHER PAGES -->
+    <definition name="teacher_default" extends="home_template">
+        <put-attribute name="sidebar" value="/WEB-INF/views/teacher/sidebar.jspx"/>
+    </definition>
+    <definition name="teacher/main" extends="teacher_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/teacher/main.jspx"/>
+    </definition>
+    <definition name="teacher/addcourse" extends="teacher_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/teacher/addcourse.jspx"/>
+    </definition>
+    <definition name="teacher/students" extends="teacher_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/teacher/students.jspx"/>
+    </definition>
+    <definition name="teacher/endcourse" extends="teacher_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/teacher/endcourse.jspx"/>
+    </definition>
+    <definition name="teacher/courses" extends="teacher_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/teacher/courses.jspx"/>
+    </definition>
+    <definition name="teacher/putmark" extends="teacher_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/teacher/putmark.jspx"/>
+    </definition>
+
+    <!-- STUDENT PAGES -->
+    <definition name="student_default" extends="home_template">
+        <put-attribute name="sidebar" value="/WEB-INF/views/student/sidebar.jspx"/>
+    </definition>
+    <definition name="student/main" extends="student_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/main.jspx"/>
+    </definition>
+    <definition name="student/attendcourse" extends="student_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/attendcourse.jspx"/>
+    </definition>
+    <definition name="student/teachers" extends="student_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/teachers.jspx"/>
+    </definition>
+    <definition name="student/marks" extends="student_default">
+        <put-attribute name="title" value="page.common.main.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/student/marks.jspx"/>
+    </definition>
+
+    <!-- ERROR PAGE -->
+    <definition name="error" extends="home_template">
+        <put-attribute name="title" value="page.error.title"/>
+        <put-attribute name="body" value="/WEB-INF/views/errors/error.jspx"/>
+    </definition>
+
+    <!-- REGISTRATION PAGE -->
+    <definition name="registration" extends="home_template">
+        <put-attribute name="title" value="page.registration.title"/>
+        <put-attribute name="sidebar" value="/WEB-INF/views/common/sidebar.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/registration/registration.jspx"/>
+    </definition>
+</tiles-definitions>
+

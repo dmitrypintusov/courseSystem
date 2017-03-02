@@ -1,0 +1,36 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:s="http://www.springframework.org/tags"
+          xmlns="http://www.w3.org/1999/xhtml"
+          version="2.0">
+
+    <div>
+        <s:url value="/login" var="authUrl" />
+        <form name="loginForm" method="post" action="${authUrl}" onsubmit="return validateForm()">
+
+            <div class="form-group">
+                <p align="center"><strong><s:message code="page.home.banner"/></strong></p>
+                <s:message var="inputLogin" code="page.common.input.login"/>
+                <input type="text" id="login" class="form-control" name="login" placeholder="${inputLogin}"/>
+                <div align="center"><span id="emptyLogin"/></div>
+            </div>
+
+            <div class="form-group">
+                <s:message var="inputPassword" code="page.common.input.password"/>
+                <input type="password" id="password" name="password" class="form-control" placeholder="${inputPassword}" />
+                <div align="center"><label id="label">
+                ${errorLoginOrPassword}
+                ${operationMessage}
+                </label></div>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"><jsp:text/></input>
+            </div>
+
+            <div class="form-group" align="center">
+                <s:message var="buttonName" code="page.home.button"/>
+                <input type="submit" class="btn btn-success" value="${buttonName}" onClick="clearResult()"/>
+            </div>
+        </form>
+    </div>
+</jsp:root>

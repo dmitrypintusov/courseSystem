@@ -1,0 +1,41 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: Дмитрий
+  Date: 24.02.2017
+  Time: 19:57
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:spring="http://www.springframework.org/tags"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+
+      <div align="center">
+          <spring:url value="/student/attendcourse" var="attendCourseUrl"/>
+          <form name="attendCourseForm" method="post" action="${attendCourseUrl}">
+              <h3><spring:message code="page.student.attendcourse.banner"/></h3>
+              <table class="table table-bordered table-hover" align="center">
+                  <tr bgcolor="#CCCCCC">
+                      <td align="center"><strong><spring:message code="page.student.course.name"/></strong></td>
+                      <td align="center"><strong><spring:message code="page.student.course.hours"/></strong></td>
+                      <td align="center"><strong><spring:message code="page.student.course.status"/></strong></td>
+                      <td align="center"><strong><spring:message code="page.student.course.choose"/></strong></td>
+                  </tr>
+                  <c:forEach var="course" items="${courseList}">
+                      <tr>
+                          <td><c:out value="${course.courseName}" /></td>
+                          <td><c:out value="${course.hours}" /></td>
+                          <td><c:out value="${course.courseStatus}"/></td>
+                          <td><input type="radio" value="${ course.courseName }"/></td>
+                      </tr>
+                  </c:forEach>
+              </table>
+              ${errorEmptyChoice}<br/>
+              ${errorEmptyList} <br/>
+              <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"><jsp:text/></input>
+              <spring:message var="button" code="page.student.attendcourse.button"/>
+              <input type="submit" class="btn btn-success" value="${button}"/>  <br/>
+          </form>
+      </div>
+</jsp:root>

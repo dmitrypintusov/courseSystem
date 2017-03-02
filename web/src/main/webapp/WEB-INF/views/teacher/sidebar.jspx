@@ -1,0 +1,15 @@
+
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:s="http://www.springframework.org/tags"
+          xmlns="http://www.w3.org/1999/xhtml"
+          version="2.0">
+    <div class="list-group">
+        <a class="list-group-item" href="${pageContext.request.contextPath}/teacher/main"><s:message code="page.common.sidebar.main"/></a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/teacher/addcourse"><s:message code="page.teacher.sidebar.addcourse"/></a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/teacher/endcourse"><s:message code="page.teacher.sidebar.endcourse"/></a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/teacher/courses"><s:message code="page.teacher.sidebar.courses"/></a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/teacher/students"><s:message code="page.teacher.sidebar.students"/></a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/teacher/putmark"><s:message code="page.teacher.sidebar.putmark"/></a>
+        <a class="list-group-item" href="${pageContext.request.contextPath}/logout"><s:message code="page.common.sidebar.logout"/></a>
+    </div>
+</jsp:root>

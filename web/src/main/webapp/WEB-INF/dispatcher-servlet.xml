@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+                           http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <context:component-scan base-package="by.pvt.pintusov.courses"/>
+
+    <import resource="classpath*:dao-context.xml"/>
+    <import resource="classpath*:services-context.xml"/>
+
+    <mvc:resources mapping="/assets/**" location="/assets/"/>
+    <mvc:annotation-driven/>
+
+    <bean id="tilesConfigurer"
+          class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"
+          p:definitions="/WEB-INF/tiles.xml"
+    />
+
+    <bean id="tilesViewResolver"
+          class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+          p:viewClass="org.springframework.web.servlet.view.tiles3.TilesView"
+    />
+
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+          p:basename="classpath:i18n/messages"
+          p:defaultEncoding="UTF-8"
+    />
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+          p:defaultLocale="ru"
+          p:cookieName="LocaleCookie"
+          p:cookieMaxAge="3600"
+    />
+
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+              p:paramName="locale"
+        />
+    </mvc:interceptors>
+</beans>

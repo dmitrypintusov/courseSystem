@@ -1,0 +1,27 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: Дмитрий
+  Date: 25.02.2017
+  Time: 14:22
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:spring="http://www.springframework.org/tags"
+          version="2.0" >
+
+    <div align="center">
+        <spring:url value="/teacher/endcourse" var="endCourseUrl"/>
+        <form name="endCourseForm" method="post" action="${endCourseUrl}">
+            <h3><spring:message code="page.teacher.endcourse.banner"/><br/></h3>
+            <div class="form-group">
+                <input type="text" class="form-control" name="endCourse" value=""/><br/>
+            </div>
+            ${successOperation} <br/>
+            ${courseStatusEnded} <br/>
+            <spring:message var="button" code="page.teacher.endcourse.button"/>
+            <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"><jsp:text/></input>
+            <input type="submit" class="btn btn-success" value="${button}"/> <br/>
+        </form>
+    </div>
+</jsp:root>

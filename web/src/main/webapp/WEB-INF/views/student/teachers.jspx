@@ -1,0 +1,28 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: Дмитрий
+  Date: 25.02.2017
+  Time: 13:07
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:spring="http://www.springframework.org/tags"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+
+    <div align="center">
+        <table class="table table-hover table-bordered" align="center">
+            <tr bgcolor="#CCCCCC">
+                <td align="center"><strong><spring:message code="page.student.teachers.firstname"/></strong></td>
+                <td align="center"><strong><spring:message code="page.student.teachers.lastname"/></strong></td>
+            </tr>
+            <c:forEach var="teacher" items="${userList}">
+                <tr align="center">
+                    <td><c:out value="${teacher.firstName}" /></td>
+                    <td><c:out value="${teacher.lastName}" /></td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+</jsp:root>
