@@ -4,6 +4,9 @@
           version="2.0">
 
     <div align="center">
-        <h3><s:message code="page.info.message"/></h3>
+        <h3><s:message code="page.info.weather"/></h3>
+        <a href="https://clck.yandex.ru/redir/dtype=stred/pid=7/cid=1228/*https://yandex.by/pogoda/157" target="_blank"><img src="//info.weather.yandex.net/157/3.ru.png?domain=by" border="0" alt="Яндекс.Погода"/><img width="1" height="1" src="https://clck.yandex.ru/click/dtype=stred/pid=7/cid=1227/*https://img.yandex.ru/i/pix.gif" alt="" border="0"/></a>
+        <h3><s:message code="page.info.time"/></h3>
+        <iframe  frameborder="no" scrolling="no" width="150" height="280" src="https://yandex.ru/time/widget/?geoid=157&amp;lang=ru&amp;layout=vert&amp;type=analog&amp;face=serif"></iframe>
     </div>
 </jsp:root>

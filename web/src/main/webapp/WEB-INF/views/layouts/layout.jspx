@@ -23,13 +23,16 @@
         <link href="${pageContext.request.contextPath}/assets/css/index/page_style.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/assets/css/logo_style.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/assets/css/index/sidebar_style.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/login_form_validation.js"><jsp:text/></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/clear_result.js"><jsp:text/></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/login_form_validation.js"><jsp:text/></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"type="text/css" />
+        <script src="${pageContext.request.contextPath}/assets/js/jquery-1.11.1.min.js" type="text/javascript"><jsp:text/></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"><jsp:text/></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"><jsp:text/></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"><jsp:text/></script>
+        <script src="${pageContext.request.contextPath}/assets/js/login_form_validation.js"><jsp:text/></script>
+        <script src="${pageContext.request.contextPath}/assets/js/clear_result.js"><jsp:text/></script>
+        <script src="${pageContext.request.contextPath}/assets/js/login_form_validation.js"><jsp:text/></script>
+        <script src="https://www.google.com/jsapi" type="text/javascript"><jsp:text/></script>
+        <script src="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.js" type="text/javascript"><jsp:text/></script>
         ]]>
 
         <c:set var="title"><tiles:getAsString name="title"/></c:set>
